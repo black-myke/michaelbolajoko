@@ -1,0 +1,171 @@
+"use client"
+
+import { useState } from "react"
+import { Mail, Phone, MapPin, Send } from "lucide-react"
+
+
+export default function Contact() {
+    const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    })
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target
+      setFormData((prev) => ({ ...prev, [name]: value }))
+    }
+  
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      // Here you would typically send the form data to your backend or a service like Formspree
+      console.log("Form submitted:", formData)
+      // Reset form
+      setFormData({ name: "", email: "", subject: "", message: "" })
+      // Show success message (in a real app)
+      alert("Message sent successfully!")
+    }
+  
+    return (
+      <section id="contact" className="py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+              Get In Touch
+            </h2>
+            <p className="text-gray-300">
+              Have a project in mind or want to discuss a potential collaboration? Feel free to reach out!
+            </p>
+          </div>
+  
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            <div>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-gray-800 rounded-lg">
+                    <Mail className="text-purple-400" size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-white mb-1">Email</h3>
+                    <p className="text-gray-400">michaelbolajoko@gmail.com</p>
+                  </div>
+                </div>
+  
+                {/* <div className="flex items-start gap-4">
+                  <div className="p-3 bg-gray-800 rounded-lg">
+                    <Phone className="text-blue-400" size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-white mb-1">Phone</h3>
+                    <p className="text-gray-400">+1 (555) 123-4567</p>
+                  </div>
+                </div> */}
+  
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-gray-800 rounded-lg">
+                    <MapPin className="text-purple-400" size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium text-white mb-1">Location</h3>
+                    <p className="text-gray-400">Lagos, Nigeria</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div className="mt-8">
+                <h3 className="text-lg font-medium text-white mb-4">Connect with me</h3>
+                <div className="flex gap-4">
+                  {["github", "twitter", "linkedin", "dribbble"].map((social) => (
+                    <a
+                      key={social}
+                      href="#"
+                      className="p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
+                      aria-label={`Visit my ${social} profile`}
+                    >
+                      <span className="sr-only">{social}</span>
+                      <div className="w-5 h-5 bg-gradient-to-r from-purple-400 to-blue-500 rounded-sm" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+  
+            <div className="bg-gray-800/50 p-6 rounded-xl">
+              <form onSubmit={handleSubmit}>
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+                    />
+                  </div>
+  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                      Your Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+                    />
+                  </div>
+  
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-1">
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"
+                    />
+                  </div>
+  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={4}
+                      className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white resize-none"
+                    ></textarea>
+                  </div>
+  
+                  <button
+                    type="submit"
+                    className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                  >
+                    <Send size={18} />
+                    Send Message
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
