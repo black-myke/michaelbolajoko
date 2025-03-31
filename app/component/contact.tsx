@@ -12,19 +12,30 @@ export default function Contact() {
       message: "",
     })
   
-    const handleChange = (e) => {
-      const { name, value } = e.target
-      setFormData((prev) => ({ ...prev, [name]: value }))
-    }
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const { name, value } = e.target;
+  setFormData((prev) => ({ ...prev, [name]: value }));
+};
   
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e:  React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      // Here you would typically send the form data to your backend or a service like Formspree
-      console.log("Form submitted:", formData)
-      // Reset form
-      setFormData({ name: "", email: "", subject: "", message: "" })
-      // Show success message (in a real app)
-      alert("Message sent successfully!")
+      try {
+        const response = await fetch("https://formspree.io/f/xjkyezpp", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
+
+        if(response.ok) {
+          alert("Message Successfully Sent!");
+          setFormData({ name: "", email: "", subject: "", message: "" });
+        } else {
+          alert("Hey, something went wrong. Try again please.")
+        }
+      }
+      catch(error) {
+        alert("Error Sending Message! Please Check Your Internet Connection")
+      }
     }
   
     return (
@@ -35,7 +46,7 @@ export default function Contact() {
               Get In Touch
             </h2>
             <p className="text-gray-300">
-              Have a project in mind or want to discuss a potential collaboration? Feel free to reach out!
+              Have a project in mind or want to discuss a potential collaboration? Please reach out to me!
             </p>
           </div>
   
@@ -51,16 +62,6 @@ export default function Contact() {
                     <p className="text-gray-400">michaelbolajoko@gmail.com</p>
                   </div>
                 </div>
-  
-                {/* <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-800 rounded-lg">
-                    <Phone className="text-blue-400" size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium text-white mb-1">Phone</h3>
-                    <p className="text-gray-400">+1 (555) 123-4567</p>
-                  </div>
-                </div> */}
   
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-gray-800 rounded-lg">
@@ -92,11 +93,11 @@ export default function Contact() {
             </div>
   
             <div className="bg-gray-800/50 p-6 rounded-xl">
-              <form onSubmit={handleSubmit}>
+              <form action="https://formspree.io/f/xjkyezpp" method="POST" onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
-                      Your Name
+                      Full Name
                     </label>
                     <input
                       type="text"
@@ -156,7 +157,7 @@ export default function Contact() {
   
                   <button
                     type="submit"
-                    className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                    className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-70 transition-opacity flex items-center justify-center gap-2 hover:cursor-pointer"
                   >
                     <Send size={18} />
                     Send Message
