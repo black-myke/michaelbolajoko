@@ -9,7 +9,7 @@ const stylish = Stylish ({weight: ['400'], style: ["normal"],  variable: '--font
 export default function Footer() {
   const socialLinks = [
     { name: "X", url: "https://x.com/bolajoko_jnr", icon: "/twitter-x.svg" },
-    { name: "LinkedIn", url: "www.linkedin.com/in/michael-bolajoko", icon: "/linkedin.svg" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/michael-bolajoko", icon: "/linkedin.svg" },
     { name: "GitHub", url: "https://github.com/black-myke", icon: "/github.svg" },
   ]
     const currentYear = new Date().getFullYear();
