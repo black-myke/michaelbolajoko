@@ -2,9 +2,18 @@
 
 import { useState } from "react"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { toast, ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css";
+import Image from "next/image";
 
 
 export default function Contact() {
+
+  const socialLinks = [
+    { name: "X", url: "https://x.com/bolajoko_jnr", icon: "/twitter-x.svg" },
+    { name: "LinkedIn", url: "www.linkedin.com/in/michael-bolajoko", icon: "/linkedin.svg" },
+    { name: "GitHub", url: "https://github.com/black-myke", icon: "/github.svg" },
+  ]
     const [formData, setFormData] = useState({
       name: "",
       email: "",
@@ -27,18 +36,20 @@ export default function Contact() {
         });
 
         if(response.ok) {
-          alert("Message Successfully Sent!");
+          toast.success("Message Successfully Sent! I will get in touch with you shortly. Thanks!", { position: "top-center", autoClose: 5000 });
           setFormData({ name: "", email: "", subject: "", message: "" });
         } else {
-          alert("Hey, something went wrong. Try again please.")
+          toast.error("Hey, something went wrong. Please try again.", { position: "top-center", autoClose: 5000 });
         }
       }
       catch(error) {
-        alert("Error Sending Message! Please Check Your Internet Connection")
+        toast.error("Looks like your connection is down. Please turn on your internet and try again.", { position: "top-center", autoClose: 5000 });
       }
     }
   
     return (
+      <>
+      <ToastContainer />
       <section id="contact" className="py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
@@ -77,15 +88,16 @@ export default function Contact() {
               <div className="mt-8">
                 <h3 className="text-lg font-medium text-white mb-4">Connect with me</h3>
                 <div className="flex gap-4">
-                  {["github", "twitter", "linkedin", "dribbble"].map((social) => (
+                {socialLinks.map(({ name, url, icon }) => (
                     <a
-                      key={social}
-                      href="#"
-                      className="p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
-                      aria-label={`Visit my ${social} profile`}
+                      key={name}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center"
+                      aria-label={`Visit my ${name} profile`}
                     >
-                      <span className="sr-only">{social}</span>
-                      <div className="w-5 h-5 bg-gradient-to-r from-purple-400 to-blue-500 rounded-sm" />
+                      <Image src={icon} alt={name} width={24} height={24} className="w-6 h-6 hover:opacity-80" />
                     </a>
                   ))}
                 </div>
@@ -168,5 +180,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
+      </>
     )
   }

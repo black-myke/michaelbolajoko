@@ -7,10 +7,15 @@ import Image from "next/image";
 const stylish = Stylish ({weight: ['400'], style: ["normal"],  variable: '--font-stylish'});
 
 export default function Footer() {
+  const socialLinks = [
+    { name: "X", url: "https://x.com/bolajoko_jnr", icon: "/twitter-x.svg" },
+    { name: "LinkedIn", url: "www.linkedin.com/in/michael-bolajoko", icon: "/linkedin.svg" },
+    { name: "GitHub", url: "https://github.com/black-myke", icon: "/github.svg" },
+  ]
     const currentYear = new Date().getFullYear();
 
     return (
-      <footer className="py-10 bg-gray-900 border-t border-gray-800">
+      <footer className="pt-10 pb-5 bg-gray-900 border-t border-gray-800">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
@@ -26,23 +31,24 @@ export default function Footer() {
   
             <div className="flex flex-col items-center md:items-end">
               <div className="flex space-x-4 mb-4">
-                
-                {["github", "twitter", "linkedin", "dribbble"].map((social) => (
+               {socialLinks.map(({ name, url, icon }) => (
                   <a
-                    key={social}
-                    href="#"
-                    className="p-2 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
-                    aria-label={`Visit my ${social} profile`}
+                    key={name}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center"
+                    aria-label={`Visit my ${name} profile`}
                   >
-                    <span className="sr-only">{social}</span>
-                    <div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-blue-500 rounded-sm" />
+                    <Image src={icon} alt={name} width={20} height={20} className="w-4 h-4 hover:opacity-80" />
                   </a>
                 ))}
               </div>
-              <p className="text-sm text-gray-500">&copy; {currentYear}</p>
+              
             </div>
           </div>
         </div>
+        <p className=" text-lg text-center text-gray-500 mb-0">&copy; {currentYear}</p>
       </footer>
     )
   }

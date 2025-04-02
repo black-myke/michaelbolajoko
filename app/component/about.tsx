@@ -10,7 +10,7 @@ export default function About() {
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 blur-md" />
                 <div className="absolute inset-1 rounded-full overflow-hidden bg-gray-900">
                   <Image
-                    src="/placeholder.svg?height=320&width=320"
+                    src="/about-picture.jpg"
                     alt="John Doe"
                     width={320}
                     height={320}
@@ -38,19 +38,19 @@ export default function About() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <h3 className="text-white font-medium mb-2">Name:</h3>
-                  <p className="text-gray-400">Michael Bolajoko</p>
+                  <p className="text-gray-400 text-[16px] lg:text-lg">Michael Bolajoko</p>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium mb-2">Email:</h3>
-                  <p className="text-gray-400">michaelbolajoko@gmail.com</p>
+                  <h3 className="text-white mb-2">Email:</h3>
+                  <p className="text-gray-400 text-[16px] lg:text-lg">michaelbolajoko@gmail.com</p>
                 </div>
                 <div>
                   <h3 className="text-white font-medium mb-2">Location:</h3>
-                  <p className="text-gray-400">Lagos, Nigeria</p>
+                  <p className="text-gray-400 text-[16px] lg:text-lg">Lagos, Nigeria</p>
                 </div>
                 <div>
                   <h3 className="text-white font-medium mb-2">Availability:</h3>
-                  <p className="text-gray-400">Freelance & Full-time</p>
+                  <p className="text-gray-400 text-[16px] lg:text-lg">Freelance & Full-time</p>
                 </div>
               </div>
             </div>
