@@ -35,22 +35,22 @@ export default function About() {
                 exceed expectations, ensuring your web presence stands out in today's competitive landscape. <br />
                 Passionate about technology, music, movies, climate, animals and lifestyle.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="text-white font-medium mb-2">Name:</h3>
-                  <p className="text-gray-400 text-[16px] lg:text-lg">Michael Bolajoko</p>
+                  <h3 className="text-white font-medium mb-2 text-xl">Name:</h3>
+                  <p className="text-gray-400 text-lg">Michael Bolajoko</p>
                 </div>
                 <div>
-                  <h3 className="text-white mb-2">Email:</h3>
-                  <p className="text-gray-400 text-[16px] lg:text-lg">michaelbolajoko@gmail.com</p>
+                  <h3 className="text-white font-medium mb-2 text-xl">Email:</h3>
+                  <p className="text-gray-400 text-lg">michaelbolajoko@gmail.com</p>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium mb-2">Location:</h3>
-                  <p className="text-gray-400 text-[16px] lg:text-lg">Lagos, Nigeria</p>
+                  <h3 className="text-white font-medium mb-2 text-xl">Location:</h3>
+                  <p className="text-gray-400 text-lg">Lagos, Nigeria</p>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium mb-2">Availability:</h3>
-                  <p className="text-gray-400 text-[16px] lg:text-lg">Freelance & Full-time</p>
+                  <h3 className="text-white font-medium mb-2 text-xl">Availability:</h3>
+                  <p className="text-gray-400 text-lg">Freelance & Full-time</p>
                 </div>
               </div>
             </div>
