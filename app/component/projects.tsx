@@ -3,8 +3,6 @@
 import { useState } from "react"
 import { ExternalLink, Github } from "lucide-react"
 import Image from "next/image"
-import GenioConsult from "@/app/assets/images/Genio_Consult.png"
-import Innovatetoimpact from "@/app/assets/images/I2I.png"
 
 export default function Projects() {
     const [activeFilter, setActiveFilter] = useState("all")
@@ -15,19 +13,19 @@ export default function Projects() {
         title: "Genio Consults",
         description:
           "Official website of Genio Consults - a management consulting and accounting firm.",
-        image: GenioConsult,
+        image: "/Genio_Consult.png",
         tags: ["react", "tailwind"],
         demoLink: "https://genioconsults.xyz/",
         githubLink: "#",
       },
       {
         id: 2,
-        title: "Innovate to Impact",
+        title: "Digital Jotter",
         description:
-          "Official website of Innovate-to-Impact tech community",
-        image: Innovatetoimpact,
-        tags: ["nextjs", "tailwindcss"],
-        demoLink: "https://www.innovatetoimpact.org/",
+          "Online Jotter to store notes and information. It feature the ability to edit and delete file.",
+        image: "/Journal.png",
+        tags: ["react", "tailwindcss"],
+        demoLink: "https://dailynotes-silk.vercel.app/",
         githubLink: "#",
       },
       {
